@@ -103,7 +103,6 @@ if (isset($_POST['stripeToken'])) {
                 <?php } ?>
                 <div class="panel=body">
                     <p><?php echo $item->description; ?></p>
-                    <p>Image: <?php echo $item->image; ?></p>
                     <h4>Unit price: <?php echo $item_price/100; ?>€</p>
                     <h4>Ordered: <?php echo $number;?> units</p>
                     <h3>Total: <?php echo $total/100; ?>€</h3>
