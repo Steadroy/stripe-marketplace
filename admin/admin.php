@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('../config.php');
 $dbh = new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $passwd);
 //Please protect this page with .htpasswd
 if (isset($_POST['name'])) {
