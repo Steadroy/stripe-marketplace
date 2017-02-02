@@ -31,14 +31,13 @@ $dbh = new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $passwd);
                         <div class="panel-body">
                             <h2><?php echo $item->name; ?></h2>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-9">
                                 Price: <?php echo $item->price/100; ?>€<br/>
-                                Image: <?php echo $item->image; ?><br/>
                                 Description: <?php echo $item->description; ?><br/>
                                 Number of items remaining: <?php echo $item->nb_remaining; ?><br/>
                                 </div>
                                 <?php if ($item->image) { ?>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <img class="img-responsive" src="images/<?php echo $item->image; ?>" />
                                     </div>
                                 <?php } ?>
