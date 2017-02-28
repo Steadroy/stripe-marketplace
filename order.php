@@ -2,6 +2,10 @@
 require_once('vendor/autoload.php');
 require_once('config.php');
 
+function notify($message) {
+  exec('notify "'.  $message . '" > /dev/null 2>/dev/null &');
+}
+
 $dbh = new PDO('mysql:host=localhost;dbname=' . $dbname, $user, $passwd);
 \Stripe\Stripe::setApiKey($sk);
 
@@ -71,8 +75,8 @@ if (isset($_POST['stripeToken'])) {
     $insert = $dbh->prepare('INSERT INTO sold VALUES (NULL, :email, :item_id, :number, NULL)');
     $insert->execute(array(':number' => $number, ':item_id' => $item_id, 'email' => $email));
 
-    $string = urlencode('I bought item #' . $item_id . ' (x' . $number . ')');
-    exec('sms ' . $email . ' ' .  $string . ' > /dev/null 2>/dev/null &');
+    $string = $email . ' bought item #' . $item_id . ' (x' . $number . ')';
+    notify($string);
 
     header('Location: success.php'); die;
 }
